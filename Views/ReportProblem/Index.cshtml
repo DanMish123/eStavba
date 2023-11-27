@@ -1,0 +1,78 @@
+﻿@model ReportProblemModel
+
+<h2>Report a Problem</h2><br />
+
+<style>
+
+    h2 {
+        text-align: center;
+    }
+
+    form {
+        display: grid;
+        gap: 10px;
+        max-width: 400px;
+        margin: auto;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input,
+    textarea {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+    }
+
+        textarea[name="ProblemDescription"] {
+            resize: none;
+            height: 100px;
+        }
+
+    button {
+        padding: 10px;
+    }
+</style>
+
+<form asp-action="SubmitProblem" method="post">
+    <div>
+        <label asp-for="FirstName"></label>
+        <input asp-for="FirstName" />
+        <span asp-validation-for="FirstName"></span>
+    </div>
+
+    <div>
+        <label asp-for="LastName"></label>
+        <input asp-for="LastName" />
+        <span asp-validation-for="LastName"></span>
+    </div>
+
+    <div>
+        <label asp-for="Email"></label>
+        <input asp-for="Email" />
+        <span asp-validation-for="Email"></span>
+    </div>
+
+    <div>
+        <label asp-for="PhoneNumber"></label>
+        <input asp-for="PhoneNumber" />
+        <span asp-validation-for="PhoneNumber"></span>
+    </div>
+
+    <div>
+        <label asp-for="ApartmentNumber"></label>
+        <input asp-for="ApartmentNumber" />
+        <span asp-validation-for="ApartmentNumber"></span>
+    </div>
+
+    <div>
+        <label asp-for="ProblemDescription"></label>
+        <textarea asp-for="ProblemDescription"></textarea>
+        <span asp-validation-for="ProblemDescription"></span>
+    </div>
+
+    <button type="submit">Submit Problem</button>
+</form>

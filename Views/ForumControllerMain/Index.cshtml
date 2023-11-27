@@ -1,0 +1,74 @@
+﻿<!-- Views/Forum/Index.cshtml -->
+@model List<ForumThreadViewModel>
+
+<h2>Forum Threads</h2>
+
+<div style="margin-bottom: 40px;">
+    <a asp-action="Create">Create New Thread</a>
+</div>
+
+@foreach (var thread in Model)
+{
+    <div class="forum-thread">
+        <h3>@thread.Thread.Title</h3>
+        <p>@thread.Thread.Content</p>
+        <p>Created at: @thread.Thread.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss")</p>
+
+        <!-- Display replies for the thread -->
+        <ul>
+            @foreach (var reply in thread.Replies)
+            {
+                <li>@reply.Content - @reply.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss")</li>
+            }
+        </ul>
+
+        <div class="thread-actions">
+            <a asp-action="Delete" asp-route-id="@thread.Thread.Id">Delete</a>
+            <a asp-action="Edit" asp-route-id="@thread.Thread.Id">Edit</a>
+        </div>
+
+        <!-- Reply Form -->
+        <form asp-action="Reply" asp-controller="ForumControllerMain" method="post" style="margin-top: 10px;">
+            <input type="hidden" asp-for="@thread.Thread.Id" name="threadId" />
+            <div style="display: flex;">
+                <textarea id="replyContent" name="replyContent" rows="1" style="resize: none; width: 600px;" required></textarea>
+                <button type="submit" style="margin-left: 10px;">Reply</button>
+            </div>
+        </form>
+    </div>
+    <hr />
+}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var toggleButtons = document.querySelectorAll('.toggle-replies-btn');
+
+        toggleButtons.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var repliesSection = this.nextElementSibling;
+                repliesSection.style.display = (repliesSection.style.display === 'none') ? 'block' : 'none';
+            });
+        });
+
+        var replyForms = document.querySelectorAll('.reply-form');
+
+        replyForms.forEach(function (form) {
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                var formData = new FormData(form);
+
+                fetch(form.action, {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(response => response.text())
+                    .then(data => {
+                        var repliesSection = form.nextElementSibling;
+                        repliesSection.innerHTML = data;
+                        repliesSection.style.display = 'block';
+                    });
+            });
+        });
+    });
+</script>

@@ -1,0 +1,39 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+  background-color: #eee;
+}
+
+/* Styles to position Delete and Edit buttons */
+.forum-thread {
+    position: relative;
+}
+
+.thread-actions {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+/* Optional: Add styling for the horizontal line */
+hr {
+    margin: 10px 0;
+    border: 0;
+    border-top: 2px solid #aaa;
+}
+
+

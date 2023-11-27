@@ -1,0 +1,60 @@
+﻿<!-- Views/Forum/Edit.cshtml -->
+@model ForumThreadModel
+<br />
+<h2>Edit Thread</h2>
+<br />
+<style>
+
+    h2 {
+        text-align: center;
+    }
+
+    form {
+        display: grid;
+        gap: 10px;
+        max-width: 400px;
+        margin: auto;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input,
+    textarea {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+        resize: none;
+    }
+
+        textarea[name="Content"] {
+            resize: none;
+            height: 100px; /* Adjust the height as needed */
+        }
+
+    button {
+        padding: 10px;
+    }
+</style>
+
+
+<form asp-action="Edit" method="post">
+    @Html.AntiForgeryToken()
+    <input type="hidden" asp-for="Id" />
+
+    <div>
+        <label>Title:</label>
+        <input asp-for="Title" />
+        <span asp-validation-for="Title"></span>
+    </div>
+
+    <div>
+        <label>Content:</label>
+        <textarea asp-for="Content"></textarea>
+        <span asp-validation-for="Content"></span>
+    </div>
+
+    <button type="submit">Save Changes</button>
+</form>

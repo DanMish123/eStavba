@@ -1,0 +1,8 @@
+﻿@model ForumThreadViewModel
+
+<ul>
+    @foreach (var reply in Model.Replies)
+    {
+        <li>@reply.Content - @reply.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss")</li>
+    }
+</ul>

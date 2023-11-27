@@ -1,0 +1,45 @@
+﻿@model List<Bills>
+
+<h2>My Bills</h2><br />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Bill Type</th>
+            <th>Amount</th>
+            <th>Due Date</th>
+            <th>Paid</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var bill in Model)
+        {
+            <tr class="bill-row" data-id="@bill.Id">
+                <td>@bill.BillType</td>
+                <td>@bill.Amount</td>
+                <td>@bill.DueDate.ToShortDateString()</td>
+                <td>
+                    <input type="checkbox" id="isPaid_@bill.Id" name="isPaid" @(bill.IsPaid ? "checked" : "") class="paid-checkbox" />
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var checkboxes = document.querySelectorAll('.paid-checkbox');
+
+        checkboxes.forEach(function (checkbox) {
+            checkbox.addEventListener('change', function () {
+                var row = this.closest('.bill-row');
+                if (this.checked) {
+                    row.style.textDecoration = 'line-through';
+                } else {
+                    row.style.textDecoration = 'none';
+                }
+            });
+        });
+    });
+</script>
+

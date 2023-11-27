@@ -1,0 +1,19 @@
+﻿<!-- Views/Forum/Delete.cshtml -->
+@model ForumThreadModel
+
+<h2>Delete Thread</h2>
+
+<div>
+    <h3>@Model.Title</h3>
+    <p>@Model.Content</p>
+    <p>Created at: @Model.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss")</p>
+
+    @* Display other thread details as needed *@
+</div>
+
+<form asp-action="DeleteConfirmed" method="post">
+    @Html.AntiForgeryToken()
+    <input type="hidden" asp-for="Id" />
+    <button type="submit">Confirm Delete</button>
+</form>
+

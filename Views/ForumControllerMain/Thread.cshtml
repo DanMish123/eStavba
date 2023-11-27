@@ -1,0 +1,13 @@
+﻿@model ForumThreadViewModel
+
+<h2>@Model.Thread.Title</h2>
+<p>@Model.Thread.Content</p>
+<p>Created at: @Model.Thread.CreatedAt</p>
+
+<h3>Replies</h3>
+<ul>
+    @foreach (var reply in Model.Replies)
+    {
+        <li>@reply.Content - @reply.CreatedAt</li>
+    }
+</ul>

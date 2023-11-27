@@ -1,0 +1,57 @@
+﻿<!-- Views/Home/Welcome.cshtml -->
+@{
+    ViewData["Title"] = "Welcome";
+}
+
+<style>
+    body {
+        background-color: #f2f2f2;
+        text-align: center;
+        background: url('https://4kwallpapers.com/images/walls/thumbs_3t/3147.jpg') no-repeat center center fixed;
+        background-size: cover;
+        margin: 0; /* Remove default margin */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: #fff; /* Text color on top of the background image */
+    }
+
+    .overlay {
+        width: 60%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7); /* Opacity set to 30% */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: auto; 
+        border-radius: 15px;
+    }
+
+    h1, p {
+        z-index: 1; /* Place text on top of the overlay */
+    }
+
+    h1 {
+        font-size: 3em;
+        margin-bottom: 10px;
+    }
+
+    p {
+        font-size: 1.5em;
+        max-width: 600px;
+        margin: 0 auto 20px;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        margin-top: 20px;
+    }
+</style>
+<br /><br /><br /><br>
+<div class="overlay">
+    <h1>Welcome to eStavba</h1><br />
+    <p>Your go-to platform for all things related to building management and community living.</p>
+    <p>Explore our features and services to make your community living experience better!</p>
+</div>
