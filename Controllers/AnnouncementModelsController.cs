@@ -28,23 +28,19 @@ namespace eStavba.Controllers
 
             var announcements = GetAnnouncements();
             return View(announcements);
-            /*return _context.AnnouncementModel != null ? 
-                          View(await _context.AnnouncementModel.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.AnnouncementModel'  is null.");*/
+           
         }
 
         [Authorize]
         private List<AnnouncementModel> GetAnnouncements()
         {
-            // Implement your logic to fetch announcements from a database or any other source
-            // For simplicity, let's return a hardcoded list in this example
+        
             return new List<AnnouncementModel>
         {
             new AnnouncementModel { Id = 1, Title = "Annual Community Picnic", Content = "Join us for our annual community picnic on 29.11.2023 at FRI. Fun activities, food, and entertainment for everyone!", DatePosted = DateTime.Now.AddDays(-2) },
             new AnnouncementModel { Id = 2, Title = "Elevator Maintenance Scheduled", Content = "Please be advised that elevator maintenance is scheduled for 30.11.2023. Expect brief disruptions during the maintenance period. We apologize for any inconvenience.", DatePosted = DateTime.Now.AddDays(-1) },
             new AnnouncementModel { Id = 3, Title = "Security Update: Access Cards", Content = "For enhanced security, residents are reminded to use their access cards at all entry points. Report lost cards immediately to the management office.", DatePosted = DateTime.Now.AddDays(-2) },
 
-            // Add more announcements as needed
         };
         }
 
