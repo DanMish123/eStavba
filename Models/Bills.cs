@@ -9,7 +9,5 @@
         public string UserId { get; internal set; }
         public bool IsPaid { get; set; }
 
-
-
     }
 }

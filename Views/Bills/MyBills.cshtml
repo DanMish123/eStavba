@@ -1,4 +1,8 @@
-﻿@model List<Bills>
+﻿@model BillsViewModel  // Update with the correct namespace for your Bill model
+
+@{
+    ViewData["Title"] = "My Bills";
+}
 
 <h2>My Bills</h2><br />
 
@@ -12,7 +16,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var bill in Model)
+        @foreach (var bill in Model.Bills)
         {
             <tr class="bill-row" data-id="@bill.Id">
                 <td>@bill.BillType</td>
@@ -21,10 +25,19 @@
                 <td>
                     <input type="checkbox" id="isPaid_@bill.Id" name="isPaid" @(bill.IsPaid ? "checked" : "") class="paid-checkbox" />
                 </td>
+                <td style="text-align: right;">
+                    <form asp-action="Delete" asp-route-id="@bill.Id" method="post">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
             </tr>
         }
     </tbody>
 </table>
+
+<div>
+    <a asp-action="Create" class="btn btn-primary">Create New Bill</a>
+</div>
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {

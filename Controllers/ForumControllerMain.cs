@@ -87,6 +87,11 @@ namespace eStavba.Controllers
                 return NotFound();
             }
 
+            if (User.FindFirstValue(ClaimTypes.NameIdentifier) != thread.UserId)
+            {
+                return RedirectToAction("Index");
+            }
+
             return View(thread);
         }
 
@@ -104,8 +109,12 @@ namespace eStavba.Controllers
                 return NotFound();
             }
 
-            _context.ForumReplies.RemoveRange(thread.Replies);
+            if (User.FindFirstValue(ClaimTypes.NameIdentifier) != thread.UserId)
+            {
+                return RedirectToAction("Index");
+            }
 
+            _context.ForumReplies.RemoveRange(thread.Replies);
             _context.ForumThreads.Remove(thread);
             _context.SaveChanges();
 
@@ -122,6 +131,11 @@ namespace eStavba.Controllers
                 return NotFound();
             }
 
+            if (User.FindFirstValue(ClaimTypes.NameIdentifier) != thread.UserId)
+            {
+                return RedirectToAction("Index");
+            }
+
             return View(thread);
         }
 
@@ -130,6 +144,10 @@ namespace eStavba.Controllers
         public IActionResult Edit(ForumThreadModel thread)
         {
             
+            if (User.FindFirstValue(ClaimTypes.NameIdentifier) != thread.UserId)
+            {
+                return RedirectToAction("Index");
+            }
                 string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
                 thread.UserId = userId;

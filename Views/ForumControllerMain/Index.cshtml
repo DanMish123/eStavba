@@ -1,10 +1,12 @@
 ﻿<!-- Views/Forum/Index.cshtml -->
 @model List<ForumThreadViewModel>
+@using System.Security.Claims
+
 
 <h2>Forum Threads</h2>
 
 <div style="margin-bottom: 40px;">
-    <a asp-action="Create">Create New Thread</a>
+    <a asp-action="Create" class="btn btn-primary">Create New Thread</a>
 </div>
 
 @foreach (var thread in Model)
@@ -23,16 +25,19 @@
         </ul>
 
         <div class="thread-actions">
-            <a asp-action="Delete" asp-route-id="@thread.Thread.Id">Delete</a>
-            <a asp-action="Edit" asp-route-id="@thread.Thread.Id">Edit</a>
+            @if (User.Identity.IsAuthenticated && User.FindFirstValue(ClaimTypes.NameIdentifier) == thread.Thread.UserId){
+            <a asp-action="Delete" class="btn btn-danger" asp-route-id="@thread.Thread.Id">Delete</a>
+            <a asp-action="Edit" class="btn btn-primary" asp-route-id="@thread.Thread.Id">Edit</a>
+        }
         </div>
+
 
         <!-- Reply Form -->
         <form asp-action="Reply" asp-controller="ForumControllerMain" method="post" style="margin-top: 10px;">
             <input type="hidden" asp-for="@thread.Thread.Id" name="threadId" />
             <div style="display: flex;">
                 <textarea id="replyContent" name="replyContent" rows="1" style="resize: none; width: 600px;" required></textarea>
-                <button type="submit" style="margin-left: 10px;">Reply</button>
+                <button type="submit" class="btn btn-primary" style="margin-left: 10px;">Reply</button>
             </div>
         </form>
     </div>
@@ -67,6 +72,25 @@
                         var repliesSection = form.nextElementSibling;
                         repliesSection.innerHTML = data;
                         repliesSection.style.display = 'block';
+                    });
+            });
+        });
+
+        var editForms = document.querySelectorAll('.edit-form');
+
+        editForms.forEach(function (form) {
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                var formData = new FormData(form);
+
+                fetch(form.action, {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(response => response.text())
+                    .then(data => {
+                        location.reload();
                     });
             });
         });
