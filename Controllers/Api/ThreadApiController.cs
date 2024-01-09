@@ -7,11 +7,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using eStavba.Data;
 using eStavba.Models;
+using eStavba.Filters;
 
 namespace eStavba.Controllers_Api
 {
     [Route("api/[controller]")]
     [ApiController]
+    [ApiKeyAuth]
     public class ThreadApiController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
