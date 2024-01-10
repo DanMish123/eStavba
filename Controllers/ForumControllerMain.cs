@@ -13,7 +13,9 @@ namespace eStavba.Controllers
         private readonly ApplicationDbContext _context;
 
         public ForumControllerMain(ApplicationDbContext context)
+        
         {
+
             _context = context;
         }
 

@@ -28,19 +28,20 @@ namespace eStavba.Controllers
 
             var announcements = GetAnnouncements();
             return View(announcements);
-           
+
         }
 
         [Authorize]
         private List<AnnouncementModel> GetAnnouncements()
         {
-        
+
             return new List<AnnouncementModel>
         {
-            new AnnouncementModel { Id = 1, Title = "Annual Community Picnic", Content = "Join us for our annual community picnic on 29.11.2023 at FRI. Fun activities, food, and entertainment for everyone!", DatePosted = DateTime.Now.AddDays(-2) },
+            new AnnouncementModel { Id = 1, Title = "Annual Community Picnic", Content = "Join us for our annual community picnic on 29.11.2023 at FRI. Fun activities, food, and entertainment for everyone!", DatePosted = DateTime.Now.AddDays(-4) },
             new AnnouncementModel { Id = 2, Title = "Elevator Maintenance Scheduled", Content = "Please be advised that elevator maintenance is scheduled for 30.11.2023. Expect brief disruptions during the maintenance period. We apologize for any inconvenience.", DatePosted = DateTime.Now.AddDays(-1) },
-            new AnnouncementModel { Id = 3, Title = "Security Update: Access Cards", Content = "For enhanced security, residents are reminded to use their access cards at all entry points. Report lost cards immediately to the management office.", DatePosted = DateTime.Now.AddDays(-2) },
-
+            new AnnouncementModel { Id = 3, Title = "Security Update: Access Cards", Content = "For enhanced security, residents are reminded to use their access cards at all entry points. Report lost cards immediately to the management office.", DatePosted = DateTime.Now.AddDays(-5) },
+            new AnnouncementModel { Id = 4, Title = "Home Improvement Webinar", Content = "Join our upcoming webinar on practical home improvement tips. Learn from experts and get ideas to enhance your living space.", DatePosted = DateTime.Now.AddDays(-2) },
+            new AnnouncementModel { Id = 5, Title = "Mobile App is Here!", Content = "Download the new eStavba mobile app for convenient access to forums, announcements, and community updates on the go. Available on Google Play.", DatePosted = DateTime.Now.AddDays(-1) },
         };
         }
 
@@ -169,14 +170,14 @@ namespace eStavba.Controllers
             {
                 _context.AnnouncementModel.Remove(announcementModel);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool AnnouncementModelExists(int id)
         {
-          return (_context.AnnouncementModel?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.AnnouncementModel?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
