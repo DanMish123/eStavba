@@ -4,7 +4,22 @@
     ViewData["Title"] = "My Bills";
 }
 
-<h2>My Bills</h2><br />
+
+
+<style>
+    body {
+        background-color: #f2f2f2;
+        background: url('https://img.freepik.com/premium-photo/abstract-white-interior-highlights-future-architectural-background-3d-illustration-rendering_689904-142276.jpg') no-repeat center center fixed;
+        background-size: cover;
+        margin: 0; 
+        display: flex;
+        flex-direction: column;
+        color: #000000; 
+    }
+</style>
+
+
+<h2 style="text-align: center;">My Bills</h2><br />
 
 <table class="table">
     <thead>
@@ -36,7 +51,7 @@
 </table>
 
 <div>
-    <a asp-action="Create" class="btn btn-primary">Create New Bill</a>
+    <a asp-action="Create" class="btn btn-primary" style="margin-bottom: 2cm;">Create New Bill</a>
 </div>
 
 <script>

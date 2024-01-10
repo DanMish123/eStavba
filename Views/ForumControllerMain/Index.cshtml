@@ -3,15 +3,29 @@
 @using System.Security.Claims
 
 
-<h2>Forum Threads</h2>
+<style>
+    body {
+        background-color: #f2f2f2;
+        background: url('https://img.freepik.com/premium-photo/white-background-with-white-background-black-text-that-says-white_689904-124037.jpg?w=740') no-repeat center center fixed;
+        background-size: cover;
+        margin: 0; /* Remove default margin */
+        display: flex;
+        flex-direction: column;
+        color: #000000; /* Text color on top of the background image */
+    }
+</style>
 
-<div style="margin-bottom: 40px;">
+
+
+<h2 style="text-align: center;">Forum Threads</h2>
+
+<div style="margin-bottom: 40px; text-align: center;">
     <a asp-action="Create" class="btn btn-primary">Create New Thread</a>
 </div>
 
 @foreach (var thread in Model)
 {
-    <div class="forum-thread">
+    <div class="forum-thread" style="margin-bottom: 2cm;">
         <h3>@thread.Thread.Title</h3>
         <p>@thread.Thread.Content</p>
         <p>Created at: @thread.Thread.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss")</p>

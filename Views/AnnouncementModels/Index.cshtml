@@ -4,9 +4,23 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Announcements</h2>
+
+<style>
+    body {
+        background-color: #f2f2f2;
+        background: url('https://img.freepik.com/premium-photo/white-building-with-white-background-white-building-with-staircase-middle_689904-118980.jpg?w=740') no-repeat center center fixed;
+        background-size: cover;
+        margin-bottom: 10; 
+        display: flex;
+        flex-direction: column;
+        color: #000000; 
+    }
+</style>
+
+
+<h2 style="text-align: center";>Announcements</h2>
 <br /><br />
-<ul class="announcement-list">
+<ul class="announcement-list" style="margin-bottom: 2cm;">
     @foreach (var announcement in Model)
     {
         <li>
