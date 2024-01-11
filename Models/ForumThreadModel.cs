@@ -7,7 +7,7 @@
         public string Content { get; set; }
         public string UserId { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now;
-        public List<ForumReplyModel> Replies { get; set; } 
+        public List<ForumReplyModel>? Replies { get; set; } 
 
     }
 }
