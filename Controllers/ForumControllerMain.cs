@@ -136,7 +136,7 @@ namespace eStavba.Controllers
             if (User.FindFirstValue(ClaimTypes.NameIdentifier) != thread.UserId)
             {
                 return RedirectToAction("Index");
-            }
+            } 
 
             return View(thread);
         }
@@ -145,19 +145,14 @@ namespace eStavba.Controllers
         [HttpPost]
         public IActionResult Edit(ForumThreadModel thread)
         {
-            
-            if (User.FindFirstValue(ClaimTypes.NameIdentifier) != thread.UserId)
-            {
-                return RedirectToAction("Index");
-            }
-                string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-                thread.UserId = userId;
+            thread.UserId = userId;
 
-                _context.Update(thread);
-                _context.SaveChanges();
+            _context.Update(thread);
+            _context.SaveChanges();
 
-                return RedirectToAction("Index");
+            return RedirectToAction("Index");
             
         }
 
