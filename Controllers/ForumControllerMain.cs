@@ -7,7 +7,6 @@ using System.Security.Claims;
 
 namespace eStavba.Controllers
 {
-    // ForumController.cs
     public class ForumControllerMain : Controller
     {
         private readonly ApplicationDbContext _context;
