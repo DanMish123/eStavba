@@ -1,17 +1,22 @@
 @model Bills
 
+@{
+    ViewData["Title"] = "Create A Bill";
+}
+
 <br />
-<h2>Create New Bill</h2><br />
+<h2>Create New Bill</h2>
+<br />
 
 <style>
     body {
         background-color: #f2f2f2;
         background: url('https://img.freepik.com/premium-photo/abstract-white-interior-highlights-future-architectural-background-3d-illustration-rendering_689904-142276.jpg') no-repeat center center fixed;
         background-size: cover;
-        margin: 0; 
+        margin: 0;
         display: flex;
         flex-direction: column;
-        color: #000000; 
+        color: #000000;
     }
 </style>
 
@@ -43,7 +48,7 @@
 
         textarea[name="Content"] {
             resize: none;
-            height: 100px; 
+            height: 100px;
         }
 
 
@@ -55,21 +60,21 @@
 
 @using (Html.BeginForm("Create", "Bills", FormMethod.Post))
 {
-    <div>
-        <label>Bill Type:</label>
-        <input asp-for="BillType" />
-    </div>
+<div>
+    <label>Bill Type:</label>
+    <input asp-for="BillType" />
+</div>
 
-    <div>
-        <label>Amount:</label>
-        <input asp-for="Amount" />
-    </div>
+<div>
+    <label>Amount:</label>
+    <input asp-for="Amount" />
+</div>
 
-    <div>
-        <label>Due date:</label>
-        <input asp-for="DueDate" />
-    </div>
-    <br />
+<div>
+    <label>Due date:</label>
+    <input asp-for="DueDate" />
+</div>
+<br />
 
-    <button type="submit" class="btn btn-primary">Create Bill</button>
+<button type="submit" class="btn btn-primary">Create Bill</button>
 }
