@@ -43,7 +43,7 @@
 
         textarea[name="Content"] {
             resize: none;
-            height: 100px; /* Adjust the height as needed */
+            height: 100px; 
         }
 
 
@@ -55,8 +55,6 @@
 
 @using (Html.BeginForm("Create", "Bills", FormMethod.Post))
 {
-    <!-- Form fields for thread title, content, etc. -->
-    <!-- Example: -->
     <div>
         <label>Bill Type:</label>
         <input asp-for="BillType" />

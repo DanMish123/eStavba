@@ -1,5 +1,4 @@
-﻿// BillsController.cs
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 using eStavba.Models;
@@ -119,30 +118,12 @@ public class BillsController : Controller
 
         var userBills = _context.Bills.Where(b => b.UserId == currentUserId).ToList();
 
-    // Create a view model to encapsulate the data needed for the view
         var viewModel = new BillsViewModel
         {
             Bills = userBills,
-        // Add other properties if needed
         };
 
         return View(viewModel);
     }
-
-
-    // [Authorize]
-    // private List<Bills> GetBillsForUser(string userId)
-    // {
-     
-    //     return new List<Bills>
-    //     {
-    //         new Bills { Id = 1, UserId = userId, BillType = "Electricity", Amount = 100.00M, DueDate = DateTime.Now.AddDays(7) },
-    //         new Bills { Id = 2, UserId = userId, BillType = "Maintenance", Amount = 50.00M, DueDate = DateTime.Now.AddDays(14) },
-    //         new Bills { Id = 3, UserId = userId, BillType = "Water", Amount = 35.00M, DueDate = DateTime.Now.AddDays(10) },
-    //         new Bills { Id = 4, UserId = userId, BillType = "Heating", Amount = 150.00M, DueDate = DateTime.Now.AddDays(12) },
-    //         new Bills { Id = 5, UserId = userId, BillType = "Internet & TV", Amount = 40.00M, DueDate = DateTime.Now.AddDays(2) },
-    //     };
-    // }
-
 
 }
