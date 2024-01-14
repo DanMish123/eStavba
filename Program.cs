@@ -1,6 +1,10 @@
 using eStavba.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.UI.Services; // For IEmailSender
+using eStavba.Areas.Identity.Pages.Account;
+using eStavba.Services; // For RegisterConfirmationModel
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +13,9 @@ var connectionString = builder.Configuration.GetConnectionString("AzureConnectio
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
+builder.Services.AddSingleton<IEmailSender, EmailSender>();
+builder.Services.Configure<AuthMessageSenderOptions>(builder.Configuration.GetSection("SendGrid"));
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
