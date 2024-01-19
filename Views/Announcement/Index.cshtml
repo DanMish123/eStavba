@@ -1,0 +1,51 @@
+﻿@model List<AnnouncementModel>
+
+@{
+    ViewData["Title"] = "Announcements";
+    var isAdminUser = string.Equals(User?.Identity?.Name, "estavba@gmail.com", StringComparison.OrdinalIgnoreCase);
+}
+
+<style>
+    body {
+        background-color: #f2f2f2;
+        background: url('https://img.freepik.com/premium-photo/white-building-with-white-background-white-building-with-staircase-middle_689904-118980.jpg?w=740') no-repeat center center fixed;
+        background-size: cover;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        color: #000000;
+    }
+
+    .announcement-item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 2cm;
+    }
+
+</style>
+
+<h2 style="text-align: center;">Announcements</h2>
+
+<div style="margin-bottom: 40px; text-align: center;">
+    @if (isAdminUser)
+    {
+        <a asp-action="Create" class="btn btn-primary">Create New Announcement</a>
+    }
+</div>
+@foreach (var announcement in Model)
+{
+    <div class="announcement-item">
+        <div>
+            <h3>@announcement.Title</h3>
+            <p>@announcement.Content</p>
+            <p>@announcement.DatePosted.ToString("MMMM dd, yyyy")</p>
+        </div>
+        @if (isAdminUser)
+        {
+            <div class="action-buttons" style="gap: 10px;">
+                <a class="btn btn-primary" href="@Url.Action("Edit", "Announcement", new { id = announcement.Id })">Edit</a>
+                <a class="btn btn-danger" href="@Url.Action("Delete", "Announcement", new { id = announcement.Id })">Delete</a>
+            </div>
+        }
+    </div>
+}

@@ -2,6 +2,8 @@
 using eStavba.Data;
 using eStavba.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore;
+using System.Threading;
 
 namespace eStavba.Controllers
 {
@@ -34,6 +36,28 @@ namespace eStavba.Controllers
             }
 
             return View("Index", model);
+        }
+
+        public IActionResult Admin() {
+
+            var problems = _context.ReportedProblems.ToList();
+
+            return View("Admin", problems);
+        }
+
+        public IActionResult Delete(int id)
+        {
+            var problem = _context.ReportedProblems.Find(id);
+
+            if (problem == null)
+            {
+                return NotFound();
+            }
+
+            _context.ReportedProblems.Remove(problem);
+            _context.SaveChanges();
+
+            return Admin();
         }
     }
 }

@@ -1,10 +1,10 @@
-﻿@model ForumThreadModel
+﻿@model AnnouncementModel
 
 @{
-    ViewData["Title"] = "Delete Thread";
+    ViewData["Title"] = "Delete Announcement";
 }
 
-<h2>Delete Thread</h2>
+<h2>Delete Announcement</h2>
 
 <style>
     body {
@@ -21,12 +21,11 @@
 <div>
     <h3>@Model.Title</h3>
     <p>@Model.Content</p>
-    <p>Created at: @Model.CreatedAt.ToString("MMMM dd, yyyy")</p>
+    <p>Created at: @Model.DatePosted.ToString("MMMM dd, yyyy")</p>
 </div>
 
-<form asp-action="DeleteConfirmed" method="post">
+<form asp-action="Delete" method="post">
     @Html.AntiForgeryToken()
     <input type="hidden" asp-for="Id" />
     <button type="submit" class="btn btn-danger">Confirm Delete</button>
 </form>
-

@@ -14,11 +14,11 @@ namespace eStavba.Controllers
         public ForumControllerMain(ApplicationDbContext context)
         
         {
-
             _context = context;
         }
 
         [Authorize]
+
         public IActionResult Index()
         {
             var threads = _context.ForumThreads
@@ -88,11 +88,6 @@ namespace eStavba.Controllers
                 return NotFound();
             }
 
-            if (User.FindFirstValue(ClaimTypes.NameIdentifier) != thread.UserId)
-            {
-                return RedirectToAction("Index");
-            }
-
             return View(thread);
         }
 
@@ -110,11 +105,6 @@ namespace eStavba.Controllers
                 return NotFound();
             }
 
-            if (User.FindFirstValue(ClaimTypes.NameIdentifier) != thread.UserId)
-            {
-                return RedirectToAction("Index");
-            }
-
             _context.ForumReplies.RemoveRange(thread.Replies);
             _context.ForumThreads.Remove(thread);
             _context.SaveChanges();
@@ -125,6 +115,7 @@ namespace eStavba.Controllers
         [Authorize]
         public IActionResult Edit(int id)
         {
+            var isAdminUser = string.Equals(User?.Identity?.Name, "estavba@gmail.com", StringComparison.OrdinalIgnoreCase);
             var thread = _context.ForumThreads.Find(id);
 
             if (thread == null)
@@ -132,7 +123,7 @@ namespace eStavba.Controllers
                 return NotFound();
             }
 
-            if (User.FindFirstValue(ClaimTypes.NameIdentifier) != thread.UserId)
+            if (User.FindFirstValue(ClaimTypes.NameIdentifier) != thread.UserId || !isAdminUser)
             {
                 return RedirectToAction("Index");
             } 

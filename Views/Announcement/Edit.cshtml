@@ -1,0 +1,76 @@
+﻿@model AnnouncementModel
+
+@{
+    ViewData["Title"] = "Edit Announcement";
+}
+
+<br />
+<h2>Edit Announcement</h2>
+<br />
+
+<style>
+    body {
+        background-color: #f2f2f2;
+        background: url('https://img.freepik.com/premium-photo/white-background-with-white-background-black-text-that-says-white_689904-124037.jpg?w=740') no-repeat center center fixed;
+        background-size: cover;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        color: #000000;
+    }
+</style>
+
+<style>
+
+    h2 {
+        text-align: center;
+    }
+
+    form {
+        display: grid;
+        gap: 10px;
+        max-width: 400px;
+        margin: auto;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input,
+    textarea {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+        resize: none;
+    }
+
+        textarea[name="Content"] {
+            resize: none;
+            height: 100px;
+        }
+
+    button {
+        padding: 10px;
+    }
+</style>
+
+<form asp-action="Edit" method="post">
+    @Html.AntiForgeryToken()
+    <input type="hidden" asp-for="Id" />
+
+    <div>
+        <label>Title:</label>
+        <input asp-for="Title" />
+        <span asp-validation-for="Title"></span>
+    </div>
+
+    <div>
+        <label>Content:</label>
+        <textarea asp-for="Content"></textarea>
+        <span asp-validation-for="Content"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+</form>
