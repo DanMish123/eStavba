@@ -24,7 +24,7 @@ namespace eStavba.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("eStavba.Models.AnnouncementModel", b =>
+            modelBuilder.Entity("eStavba.Models.Announcement", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -45,7 +45,7 @@ namespace eStavba.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AnnouncementModel");
+                    b.ToTable("Announcement");
                 });
 
             modelBuilder.Entity("eStavba.Models.Bills", b =>

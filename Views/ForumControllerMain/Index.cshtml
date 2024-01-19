@@ -4,6 +4,7 @@
 
 @{
     ViewData["Title"] = "Forum";
+    var isAdminUser = string.Equals(User?.Identity?.Name, "estavba@gmail.com", StringComparison.OrdinalIgnoreCase);
 }
 
 <style>
@@ -31,19 +32,21 @@
     <div class="forum-thread" style="margin-bottom: 2cm;">
         <h3>@thread.Thread.Title</h3>
         <p>@thread.Thread.Content</p>
-        <p>Created at: @thread.Thread.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss")</p>
+        <p>Created at: @thread.Thread.CreatedAt.ToString("MMMM dd, yyyy")</p>
 
         <ul>
             @foreach (var reply in thread.Replies)
             {
-                <li>@reply.Content - @reply.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss")</li>
+                <li>@reply.Content - @reply.CreatedAt.ToString("MMMM dd, yyyy")</li>
             }
         </ul>
 
         <div class="thread-actions">
-            @if (User.Identity.IsAuthenticated && User.FindFirstValue(ClaimTypes.NameIdentifier) == thread.Thread.UserId){
+            @if (User.Identity.IsAuthenticated && User.FindFirstValue(ClaimTypes.NameIdentifier) == thread.Thread.UserId || isAdminUser){
             <a asp-action="Delete" class="btn btn-danger" asp-route-id="@thread.Thread.Id">Delete</a>
-            <a asp-action="Edit" class="btn btn-primary" asp-route-id="@thread.Thread.Id">Edit</a>
+                @if (User.Identity.IsAuthenticated && User.FindFirstValue(ClaimTypes.NameIdentifier) == thread.Thread.UserId) {
+                    <a asp-action="Edit" class="btn btn-primary" asp-route-id="@thread.Thread.Id">Edit</a>
+                }
         }
         </div>
 

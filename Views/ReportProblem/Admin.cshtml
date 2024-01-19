@@ -1,0 +1,43 @@
+﻿@model List<ReportProblemModel>
+
+@{
+    ViewData["Title"] = "Reported Problems";
+}
+
+<style>
+    body {
+        background-color: #f2f2f2;
+        background: url('https://img.freepik.com/premium-photo/abstract-white-minimalistic-architectural-interior-with-window-3d-illustration-rendering_689904-5387.jpg?size=626&ext=jpg&ga=GA1.1.1826414947.1699747200&semt=ais') no-repeat center center fixed;
+        background-size: cover;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        color: #000000;
+    }
+
+    .reported-problem-item {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        background-color: #fff;
+    }
+</style>
+
+<h2 style="text-align: center;">Reported Problems</h2>
+<br /><br />
+
+@foreach (var problem in Model)
+{
+    <div class="reported-problem-item">
+        <h3>@($"{problem.FirstName} {problem.LastName}")</h3>
+        <p>Email: @problem.Email</p>
+        <p>Phone Number: @problem.PhoneNumber</p>
+        <p>Apartment Number: @problem.ApartmentNumber</p>
+        <p>Problem Description: @problem.ProblemDescription</p>
+        <a class="btn btn-danger" href="@Url.Action("Delete", "ReportProblem", new { id = problem.Id })">Delete</a>
+    </div>
+}
+<br />
+<br />
+
