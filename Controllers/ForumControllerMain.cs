@@ -116,14 +116,22 @@ namespace eStavba.Controllers
         public IActionResult Edit(int id)
         {
             var isAdminUser = string.Equals(User?.Identity?.Name, "estavba@gmail.com", StringComparison.OrdinalIgnoreCase);
-            var thread = _context.ForumThreads.Find(id);
+            var thread = _context.ForumThreads
+                        .Include(t => t.Replies)
+                        .FirstOrDefault(t => t.Id == id);
 
             if (thread == null)
             {
                 return NotFound();
             }
 
-            if (User.FindFirstValue(ClaimTypes.NameIdentifier) != thread.UserId || !isAdminUser)
+            if (thread.Replies != null && thread.Replies.Any())
+            {
+                TempData["ErrorMessage"] = "Cannot edit a thread with replies.";
+                return RedirectToAction("Index");
+            }
+
+            if (User.FindFirstValue(ClaimTypes.NameIdentifier) != thread.UserId)
             {
                 return RedirectToAction("Index");
             } 
