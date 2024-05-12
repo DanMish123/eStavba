@@ -38,6 +38,7 @@ namespace eStavba.Controllers
             return View("Index", model);
         }
 
+
         public IActionResult Admin() {
 
             var problems = _context.ReportedProblems.ToList();

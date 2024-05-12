@@ -66,7 +66,7 @@
         overflow: hidden;
         transition-duration: .3s;
         box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
-        background: linear-gradient(144deg,#af40ff,#5b42f3 50%,#00ddeb);
+        background-color: rgb(16, 137, 211);
     }
 
     /* plus sign */
@@ -115,17 +115,117 @@
     .Btn:active {
         transform: translate(2px,2px);
     }
+
+    .heading {
+        text-align: center;
+        font-weight: 900;
+        font-size: 30px;
+        color: rgb(16, 137, 211);
+    }
+
+    .table-container {
+        max-width: 550px;
+        background: #F8F9FD;
+        background: linear-gradient(0deg, rgb(255, 255, 255) 0%, rgb(244, 247, 251) 100%);
+        border-radius: 40px;
+        padding: 25px 35px;
+        border: 5px solid rgb(255, 255, 255);
+        box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 30px 30px -20px;
+        margin: 20px auto;
+        text-align: center;
+    }
+
+    .heading {
+        text-align: center;
+        font-weight: 900;
+        font-size: 30px;
+        color: rgb(16, 137, 211);
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+        .table th,
+        .table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        .table th {
+            background-color: rgb(16, 137, 211);
+            color: white;
+        }
+
+        .table td {
+            background-color: white;
+            text-align:center;
+        }
+
+    .bin-button {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 45px;
+        height: 45px;
+        border-radius: 15px;
+        background-color: rgb(255, 95, 95);
+        cursor: pointer;
+        transition-duration: 0.3s;
+        border: none;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .bin-bottom {
+        width: 15px;
+    }
+
+    .bin-top {
+        width: 17px;
+        transform-origin: right;
+        transition-duration: 0.3s;
+    }
+
+    .bin-button:hover .bin-top {
+        transform: rotate(45deg);
+    }
+
+    .bin-button:hover {
+        background-color: rgb(255, 0, 0);
+    }
+
+    .bin-button:active {
+        transform: scale(0.9);
+    }
+
+    .paid-checkbox {
+        border: 5px solid rgb(16, 137, 211);
+        border-radius: 50%;
+        text-align: center;
+        width: 35px;
+        height: 35px;
+        margin-top: 4px;
+    }
+
 </style>
 
 
-<h2 style="text-align: center;">My Bills</h2>
 
-<div style="display: flex; justify-content: center; align-items: center;">
-    <button asp-action="Create" class="Btn">
+
+
+<h2 style="text-align: center;" class="heading">My Bills</h2>
+
+<div style="justify-content: center; align-items: center; display: flex;">
+    <button asp-action="Create" onclick="location.href='@Url.Action("Create", "Bills")'" class="Btn">
         <div class="sign">+</div>
         <div class="text">Create</div>
     </button>
-</div><br /><br />
+</div><br />
 
 <table class="table">
     <thead>
@@ -134,9 +234,11 @@
             <th>Amount</th>
             <th>Due Date</th>
             <th>Paid</th>
+            <th>Delete</th>
         </tr>
     </thead>
     <tbody>
+
         @foreach (var bill in Model.Bills)
         {
             <tr class="bill-row" data-id="@bill.Id">
@@ -144,9 +246,9 @@
                 <td>@bill.Amount</td>
                 <td>@bill.DueDate.ToShortDateString()</td>
                 <td>
-                    <input type="checkbox" id="isPaid_@bill.Id" name="isPaid" @(bill.IsPaid ? "checked" : "") class="paid-checkbox" />
+                    <input type="checkbox" class="paid-checkbox" id="isPaid_@bill.Id" name="isPaid" @(bill.IsPaid ? "checked" : "") />
                 </td>
-                <td style="text-align: right;">
+                <td style="text-align: center;">
                     <form asp-action="Delete" asp-route-id="@bill.Id" method="post">
                         <button type="submit" class="bin-button">
                             <svg class="bin-top"
@@ -181,6 +283,7 @@
         }
     </tbody>
 </table>
+<br /><br /><br />
 
 
 

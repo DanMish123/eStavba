@@ -16,55 +16,142 @@
 </style>
 
 <style>
+
     .register-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 70px;
+        max-width: 550px;
+        background: #F8F9FD;
+        background: linear-gradient(0deg, rgb(255, 255, 255) 0%, rgb(244, 247, 251) 100%);
+        border-radius: 40px;
+        padding: 25px 35px;
+        border: 5px solid rgb(255, 255, 255);
+        box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 30px 30px -20px;
+        margin: 20px auto;
+        text-align: center;
     }
 
-    #registerForm {
-        max-width: 500px;
+    .heading {
+        text-align: center;
+        font-weight: 900;
+        font-size: 30px;
+        color: rgb(16, 137, 211);
     }
 
-    .form-container {
-        margin-bottom: 20px;
+    .heading2 {
+        text-align: center;
+        font-weight: 900;
+        font-size: 20px;
+        color: rgb(16, 137, 211);
     }
 
-    .form-floating {
-        margin-bottom: 20px; 
-    }
-
-    .external-login-container {
+    .form {
         margin-top: 20px;
     }
+
+        .form .input {
+            width: 100%;
+            background: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 20px;
+            margin-top: 15px;
+            box-shadow: #cff0ff 0px 10px 10px -5px;
+            border-inline: 2px solid transparent;
+        }
+
+            .form .input::-moz-placeholder {
+                color: rgb(170, 170, 170);
+            }
+
+            .form .input::placeholder {
+                color: rgb(170, 170, 170);
+            }
+
+            .form .input:focus {
+                outline: none;
+                border-inline: 2px solid #12B1D1;
+            }
+
+        .form .forgot-password {
+            display: block;
+            margin-top: 10px;
+        }
+
+            .form .forgot-password a {
+                font-size: 11px;
+                color: #0099ff;
+                text-decoration: none;
+            }
+
+        .form .login-button {
+            display: block;
+            width: 100%;
+            font-weight: bold;
+            background: linear-gradient(45deg, rgb(16, 137, 211) 0%, rgb(18, 177, 209) 100%);
+            color: white;
+            padding-block: 15px;
+            margin: 20px auto;
+            border-radius: 20px;
+            box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 20px 10px -15px;
+            border: none;
+            transition: all 0.2s ease-in-out;
+        }
+
+            .form .login-button:hover {
+                transform: scale(1.03);
+                box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 23px 10px -20px;
+            }
+
+            .form .login-button:active {
+                transform: scale(0.95);
+                box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 15px 10px -10px;
+            }
+
+        .form .form-check {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-top: 20px; /* Adjust as needed */
+        }
+
+            .form .form-check input[type="checkbox"] {
+                margin-right: 5px; /* Adjust as needed */
+            }
+
+
+
+    .agreement {
+        display: block;
+        text-align: center;
+        margin-top: 15px;
+    }
+
+        .agreement a {
+            text-decoration: none;
+            color: #0099ff;
+            font-size: 9px;
+        }
 </style>
 
 <div class="register-container">
     <div id="registerForm">
-        <h1 class="text-center">@ViewData["Title"]</h1>
+        <h1 class="heading">@ViewData["Title"]</h1>
         <div class="row">
             <div class="col-md-12">
-                <form asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-container">
-                    <h2>Create a new account.</h2>
-                    <hr />
+                <form asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-floating">
-                        <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
-                        <label asp-for="Input.Email"></label>
+                        <input asp-for="Input.Email" class="input" autocomplete="username" aria-required="true" placeholder="Email" />
                         <span asp-validation-for="Input.Email" class="text-danger"></span>
                     </div>
                     <div class="form-floating">
-                        <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" />
-                        <label asp-for="Input.Password"></label>
+                        <input asp-for="Input.Password" class="input" autocomplete="new-password" aria-required="true" placeholder="Password" />
                         <span asp-validation-for="Input.Password" class="text-danger"></span>
                     </div>
                     <div class="form-floating">
-                        <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
-                        <label asp-for="Input.ConfirmPassword"></label>
+                        <input asp-for="Input.ConfirmPassword" class="input" autocomplete="new-password" aria-required="true" placeholder="Confirm Password" />
                         <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
                     </div>
-                    <button type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+                    <button type="submit" class="login-button">Register</button>
                 </form>
             </div>
         </div>

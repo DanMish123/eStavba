@@ -6,8 +6,30 @@
     ViewData["ActivePage"] = ManageNavPages.TwoFactorAuthentication;
 }
 
+
+<style>
+    .heading3 {
+        margin-left: 70px;
+        font-weight: 900;
+        font-size: 30px;
+        color: rgb(16, 137, 211);
+        text-align: inherit;
+    }
+
+    .heading4 {
+        margin-left: 100px;
+        font-weight: 900;
+        font-size: 30px;
+        color: rgb(16, 137, 211);
+        text-align: inherit;
+    }
+
+   
+</style>
+
+
 <partial name="_StatusMessage" for="StatusMessage" />
-<h3>@ViewData["Title"]</h3>
+<h3 class="heading3">@ViewData["Title"]</h3>
 @{
     var consentFeature = HttpContext.Features.Get<ITrackingConsentFeature>();
     @if (consentFeature?.CanTrack ?? true)
@@ -46,7 +68,7 @@
             <a asp-page="./GenerateRecoveryCodes" class="btn btn-primary">Reset recovery codes</a>
         }
 
-        <h4>Authenticator app</h4>
+        <h4 class="heading4">Authenticator app</h4><br />
         @if (!Model.HasAuthenticator)
         {
             <a id="enable-authenticator" asp-page="./EnableAuthenticator" class="btn btn-primary">Add authenticator app</a>

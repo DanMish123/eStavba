@@ -74,6 +74,7 @@
         position: relative;
         overflow: hidden;
         transition: all 0.3s;
+        margin-left: 10px;
     }
 
         .editBtn::before {
@@ -143,7 +144,7 @@
         overflow: hidden;
         transition-duration: .3s;
         box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
-        background: linear-gradient(144deg,#af40ff,#5b42f3 50%,#00ddeb);
+        background-color: rgb(16, 137, 211);
     }
 
     /* plus sign */
@@ -192,14 +193,184 @@
     .Btn:active {
         transform: translate(2px,2px);
     }
+
+    .heading {
+        text-align: center;
+        font-weight: 900;
+        font-size: 30px;
+        color: rgb(16, 137, 211);
+    }
+
+
+       .input {
+            width: 100%;
+            background: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 20px;
+            margin-top: 15px;
+            box-shadow: #cff0ff 0px 10px 10px -5px;
+            border-inline: 2px solid transparent;
+        }
+
+
+            .input::-moz-placeholder {
+                color: rgb(170, 170, 170);
+            }
+
+            .input::placeholder {
+                color: rgb(170, 170, 170);
+            }
+
+           .input:focus {
+                outline: none;
+                border-inline: 2px solid #12B1D1;
+            }
+
+    .login-button {
+        display: block;
+        width: 12.5%;
+        font-weight: bold;
+        background: linear-gradient(45deg, rgb(16, 137, 211) 0%, rgb(18, 177, 209) 100%);
+        color: white;
+        padding-block: 15px;
+        margin: 20px auto;
+        border-radius: 20px;
+        box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 20px 10px -15px;
+        border: none;
+        transition: all 0.2s ease-in-out;
+    }
+
+        .login-button:hover {
+            transform: scale(1.03);
+            box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 23px 10px -20px;
+        }
+
+        .login-button:active {
+            transform: scale(0.95);
+            box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 15px 10px -10px;
+        }
+
+    .register-container {
+        max-width: 1000px;
+        background: #F8F9FD;
+        background: linear-gradient(0deg, rgb(255, 255, 255) 0%, rgb(244, 247, 251) 100%);
+        border-radius: 40px;
+        padding: 25px 35px;
+        border: 5px solid rgb(255, 255, 255);
+        box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 30px 30px -20px;
+        margin: 20px auto;
+    }
+
+    .heading {
+        text-align: center;
+        font-weight: 900;
+        font-size: 30px;
+        color: rgb(16, 137, 211);
+    }
+
+    .heading2 {
+        text-align: center;
+        font-weight: 900;
+        font-size: 20px;
+        color: rgb(16, 137, 211);
+    }
+
+    .form {
+        margin-top: 20px;
+    }
+
+        .form .input {
+            width: 100%;
+            background: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 20px;
+            margin-top: 15px;
+            box-shadow: #cff0ff 0px 10px 10px -5px;
+            border-inline: 2px solid transparent;
+        }
+
+            .form .input::-moz-placeholder {
+                color: rgb(170, 170, 170);
+            }
+
+            .form .input::placeholder {
+                color: rgb(170, 170, 170);
+            }
+
+            .form .input:focus {
+                outline: none;
+                border-inline: 2px solid #12B1D1;
+            }
+
+        .form .forgot-password {
+            display: block;
+            margin-top: 10px;
+        }
+
+            .form .forgot-password a {
+                font-size: 11px;
+                color: #0099ff;
+                text-decoration: none;
+            }
+
+        .form .login-button {
+            display: block;
+            width: 100%;
+            font-weight: bold;
+            background: linear-gradient(45deg, rgb(16, 137, 211) 0%, rgb(18, 177, 209) 100%);
+            color: white;
+            padding-block: 15px;
+            margin: 20px auto;
+            border-radius: 20px;
+            box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 20px 10px -15px;
+            border: none;
+            transition: all 0.2s ease-in-out;
+        }
+
+            .form .login-button:hover {
+                transform: scale(1.03);
+                box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 23px 10px -20px;
+            }
+
+            .form .login-button:active {
+                transform: scale(0.95);
+                box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 15px 10px -10px;
+            }
+
+        .form .form-check {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-top: 20px; /* Adjust as needed */
+        }
+
+            .form .form-check input[type="checkbox"] {
+                margin-right: 5px; /* Adjust as needed */
+            }
+
+    .btn-container {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: flex; /* Use flexbox */
+        align-items: center; /* Center items vertically */
+    }
+
+    .editBtn,
+    .bin-button {
+        margin-left: 10px; /* Adjust as needed */
+    }
+
 </style>
 
 
 
-<h2 style="text-align: center;">Forum Threads</h2>
+<h2 style="text-align: center;" class="heading">Forum Threads</h2>
 
 <div style="display: flex; justify-content: center; align-items: center;">
-<button asp-action="Create" class="Btn" >
+    <button asp-action="Create" onclick="location.href='@Url.Action("Create", "KPostThread")'" class="Btn">
     <div class="sign">+</div>
     <div class="text">Create</div>
 </button>
@@ -208,69 +379,69 @@
 
 @foreach (var thread in Model)
 {
-    <div class="forum-thread" style="margin-bottom: 2cm;">
-        <h3>@thread.Thread.Title</h3>
-        <p>@thread.Thread.Content</p>
-        <p>Created at: @thread.Thread.CreatedAt.ToString("MMMM dd, yyyy")</p>
-
-        <ul>
-            @foreach (var reply in thread.Replies)
-            {
-                <li>@reply.Content - @reply.CreatedAt.ToString("MMMM dd, yyyy")</li>
-            }
-        </ul>
-
-        <div class="thread-actions" style="gap: 10px; display: flex;">
-            @if (User.Identity.IsAuthenticated && User.FindFirstValue(ClaimTypes.NameIdentifier) == thread.Thread.UserId)
-            {
-                <a asp-action="Edit" class="editBtn" asp-route-id="@thread.Thread.Id">
-                    <svg height="1em" viewBox="0 0 512 512">
-                        <path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"></path>
-                    </svg>
-                </a>
-            }
-            @if (User.Identity.IsAuthenticated && User.FindFirstValue(ClaimTypes.NameIdentifier) == thread.Thread.UserId || isAdminUser){
-            <a asp-action="Delete" class="bin-button" asp-route-id="@thread.Thread.Id">
-                    <svg class="bin-top"
-                         viewBox="0 0 39 7"
-                         fill="none"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <line y1="5" x2="39" y2="5" stroke="white" stroke-width="4"></line>
-                        <line x1="12"
-                              y1="1.5"
-                              x2="26.0357"
-                              y2="1.5"
-                              stroke="white"
-                              stroke-width="3"></line>
-                    </svg>
-                    <svg class="bin-bottom"
-                         viewBox="0 0 33 39"
-                         fill="none"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <mask id="path-1-inside-1_8_19" fill="white">
-                            <path d="M0 0H33V35C33 37.2091 31.2091 39 29 39H4C1.79086 39 0 37.2091 0 35V0Z"></path>
-                        </mask>
-                        <path d="M0 0H33H0ZM37 35C37 39.4183 33.4183 43 29 43H4C-0.418278 43 -4 39.4183 -4 35H4H29H37ZM4 43C-0.418278 43 -4 39.4183 -4 35V0H4V35V43ZM37 0V35C37 39.4183 33.4183 43 29 43V35V0H37Z"
-                              fill="white"
-                              mask="url(#path-1-inside-1_8_19)"></path>
-                        <path d="M12 6L12 29" stroke="white" stroke-width="4"></path>
-                        <path d="M21 6V29" stroke="white" stroke-width="4"></path>
-                    </svg>
-            </a>
-        }
+    <div class="register-container" style="margin-bottom: 2cm; position: relative;">
+        <div>
+            <div class="btn-container">
+                @if (User.Identity.IsAuthenticated && User.FindFirstValue(ClaimTypes.NameIdentifier) == thread.Thread.UserId)
+                {
+                    <a asp-action="Edit" class="editBtn" style="margin-top: 20px;" asp-route-id="@thread.Thread.Id">
+                        <svg height="1em" viewBox="0 0 512 512">
+                            <path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"></path>
+                        </svg>
+                    </a>
+                }
+                @if (User.Identity.IsAuthenticated && User.FindFirstValue(ClaimTypes.NameIdentifier) == thread.Thread.UserId || isAdminUser)
+                {
+                    <a asp-action="Delete" class="bin-button" style="margin-right: 20px; margin-top: 20px;" asp-route-id="@thread.Thread.Id">
+                        <svg class="bin-top"
+                             viewBox="0 0 39 7"
+                             fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <line y1="5" x2="39" y2="5" stroke="white" stroke-width="4"></line>
+                            <line x1="12"
+                                  y1="1.5"
+                                  x2="26.0357"
+                                  y2="1.5"
+                                  stroke="white"
+                                  stroke-width="3"></line>
+                        </svg>
+                        <svg class="bin-bottom"
+                             viewBox="0 0 33 39"
+                             fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <mask id="path-1-inside-1_8_19" fill="white">
+                                <path d="M0 0H33V35C33 37.2091 31.2091 39 29 39H4C1.79086 39 0 37.2091 0 35V0Z"></path>
+                            </mask>
+                            <path d="M0 0H33H0ZM37 35C37 39.4183 33.4183 43 29 43H4C-0.418278 43 -4 39.4183 -4 35H4H29H37ZM4 43C-0.418278 43 -4 39.4183 -4 35V0H4V35V43ZM37 0V35C37 39.4183 33.4183 43 29 43V35V0H37Z"
+                                  fill="white"
+                                  mask="url(#path-1-inside-1_8_19)"></path>
+                            <path d="M12 6L12 29" stroke="white" stroke-width="4"></path>
+                            <path d="M21 6V29" stroke="white" stroke-width="4"></path>
+                        </svg>
+                    </a>
+                }
+            </div>
+            <h3>@thread.Thread.Title</h3><br>
+            <p>@thread.Thread.Content</p>
+            <p>Created at: @thread.Thread.CreatedAt.ToString("MMMM dd, yyyy")</p>
+            <ul>
+                @foreach (var reply in thread.Replies)
+                {
+                    <li>@reply.Content - @reply.CreatedAt.ToString("MMMM dd, yyyy")</li>
+                }
+            </ul>
         </div>
-
-
         <form asp-action="Reply" asp-controller="KPostThread" method="post" style="margin-top: 10px;">
             <input type="hidden" asp-for="@thread.Thread.Id" name="threadId" />
-            <div style="display: flex;">
-                <textarea id="replyContent" name="replyContent" rows="1" style="resize: none; width: 600px;" required></textarea>
-                <button type="submit" class="btn btn-primary" style="margin-left: 10px;">Reply</button>
+            <div class="form-floating" style="display: flex;">
+                <textarea id="replyContent" style="resize: none;" name="replyContent" rows="1" class="input" aria-required="true" placeholder="Enter your reply here:"></textarea>
+                <button type="submit" class="login-button" style="margin-left: 20px;">Reply</button>
             </div>
         </form>
     </div>
     <hr />
 }
+
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {

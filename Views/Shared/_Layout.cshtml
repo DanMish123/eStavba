@@ -7,24 +7,23 @@
 
     <style>
         nav {
-            background-color: #333; 
-            color: #fff; 
+            background-color: rgb(16, 137, 211); /* Updated background color */
+            color: #fff;
             padding: 10px;
             border-bottom: 2px solid #eee;
         }
 
             nav a {
-                color: #fff;
+                color: #fff !important; /* Updated text color */
                 margin-right: 20px;
                 text-decoration: none;
-                transition: transform 0.3s ease; 
-                padding: 5px; 
+                transition: transform 0.3s ease, color 0.3s ease; /* Added color transition */
+                padding: 5px;
             }
 
                 nav a:hover {
-                    transform: scale(1.1); 
+                    transform: scale(1.1);
                 }
-      
     </style>
     @RenderSection("Styles", required: false)
 
@@ -34,7 +33,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">eStavba</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -44,25 +43,25 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="KPostThread" asp-action="Index">Forum</a>
+                            <a class="nav-link" asp-area="" asp-controller="KPostThread" asp-action="Index">Forum</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="KPostAnnouncement" asp-action="Index">Announcements</a>
+                            <a class="nav-link" asp-area="" asp-controller="KPostAnnouncement" asp-action="Index">Announcements</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Bills" asp-action="MyBills">Bills</a>
+                            <a class="nav-link" asp-area="" asp-controller="Bills" asp-action="MyBills">Bills</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="ReportProblem" asp-action="Index">Report a problem</a>
+                            <a class="nav-link" asp-area="" asp-controller="ReportProblem" asp-action="Index">Report a problem</a>
                         </li>
                         @if (User.Identity.Name == "estavba@gmail.com")
                         {
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="ReportProblem" asp-action="Admin">Reported Problems (Admin)</a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="ReportProblem" asp-action="Admin">Reported Problems (Admin)</a>
+                            </li>
                         }
                     </ul>
                     <partial name="_LoginPartial" />
@@ -76,7 +75,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer style="background-color: white" class="border-top footer text-muted">
         <div class="container">
             &copy; 2023 - eStavba - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>

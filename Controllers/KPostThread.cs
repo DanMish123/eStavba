@@ -168,6 +168,12 @@ namespace eStavba.Controllers
                 return NotFound();
             }
 
+            if (string.IsNullOrWhiteSpace(replyContent)) 
+            {
+                ModelState.AddModelError("replyContent", "Reply cannot be empty."); 
+                return RedirectToAction("Index", new { id = threadId }); 
+            }
+
             string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             var reply = new ForumReplyModel
@@ -184,6 +190,7 @@ namespace eStavba.Controllers
 
             return RedirectToAction("Index", new { id = threadId });
         }
+
 
 
     }
