@@ -24,7 +24,7 @@
     <p>Created at: @Model.DatePosted.ToString("MMMM dd, yyyy")</p>
 </div>
 
-<form asp-action="Delete" method="post">
+<form asp-action="Delete" asp-controller="KPostAnnouncement" method="post">
     @Html.AntiForgeryToken()
     <input type="hidden" asp-for="Id" />
     <button type="submit" class="btn btn-danger">Confirm Delete</button>

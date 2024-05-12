@@ -58,7 +58,7 @@
         </div>
 
 
-        <form asp-action="Reply" asp-controller="ForumControllerMain" method="post" style="margin-top: 10px;">
+        <form asp-action="Reply" asp-controller="KPostThread" method="post" style="margin-top: 10px;">
             <input type="hidden" asp-for="@thread.Thread.Id" name="threadId" />
             <div style="display: flex;">
                 <textarea id="replyContent" name="replyContent" rows="1" style="resize: none; width: 600px;" required></textarea>

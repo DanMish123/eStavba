@@ -7,11 +7,11 @@ using System.Security.Claims;
 
 namespace eStavba.Controllers
 {
-    public class ForumControllerMain : Controller
+    public class KPostThread : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public ForumControllerMain(ApplicationDbContext context)
+        public KPostThread(ApplicationDbContext context)
         
         {
             _context = context;

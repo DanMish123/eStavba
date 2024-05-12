@@ -12,11 +12,11 @@ using Microsoft.AspNetCore.Authorization;
 namespace eStavba.Controllers
 {
     [Authorize]
-    public class AnnouncementController : Controller
+    public class KPostAnnouncement : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public AnnouncementController(ApplicationDbContext context)
+        public KPostAnnouncement(ApplicationDbContext context)
         {
             _context = context;
         }

@@ -43,8 +43,8 @@
         @if (isAdminUser)
         {
             <div class="action-buttons" style="gap: 10px;">
-                <a class="btn btn-primary" href="@Url.Action("Edit", "Announcement", new { id = announcement.Id })">Edit</a>
-                <a class="btn btn-danger" href="@Url.Action("Delete", "Announcement", new { id = announcement.Id })">Delete</a>
+                <a class="btn btn-primary" href="@Url.Action("Edit", "KPostAnnouncement", new { id = announcement.Id })">Edit</a>
+                <a class="btn btn-danger" href="@Url.Action("Delete", "KPostAnnouncement", new { id = announcement.Id })">Delete</a>
             </div>
         }
     </div>
