@@ -4,5 +4,14 @@
     ViewData["Title"] = "Confirm email change";
 }
 
-<h1>@ViewData["Title"]</h1>
+<style>
+    .heading {
+        text-align: center;
+        font-weight: 900;
+        font-size: 30px;
+        color: rgb(16, 137, 211);
+    }
+</style> 
+
+<h1 class="heading">@ViewData["Title"]</h1>
 <partial name="_StatusMessage" model="Model.StatusMessage" />
