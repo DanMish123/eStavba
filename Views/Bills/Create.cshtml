@@ -122,13 +122,21 @@
 </div>
 
 <div>
-    <input asp-for="Amount" placeholder="Amount" class="input"/>
+        <input asp-for="Amount" placeholder="Amount" class="input" type="number" step="0.01" min="0" />
 </div>
 
 <div>
-    <input asp-for="DueDate" placeholder="Due Date" class="input"/>
+        <input asp-for="DueDate" placeholder="Due Date" class="input" type="date" min="@DateTime.Now.ToString("yyyy-MM-dd")" />
 </div>
 <br />
 
 <button type="submit" class="login-button">Create Bill</button>
+}
+
+@section Scripts {
+    <script>
+        document.querySelector('input[name="Amount"]').addEventListener('input', function (e) {
+            this.value = this.value.replace(/[^0-9.]/g, '');
+        });
+    </script>
 }
