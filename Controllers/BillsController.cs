@@ -66,18 +66,19 @@ public class BillsController : Controller
     [HttpPost]
       public IActionResult Create(Bills bill)
         {
+
             string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             bill.UserId = userId;
+
 
             _context.Bills.Add(bill);
             _context.SaveChanges();
 
             return RedirectToAction("MyBills");
-            
-        }
+    }
 
-        [Authorize]
+    [Authorize]
     [HttpPost]
     public IActionResult Delete(int id)
     {

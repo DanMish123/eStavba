@@ -132,11 +132,21 @@
 {
 <div>
     <input asp-for="Title" placeholder="Title" class="input"/>
+    <span asp-validation-for="Title" class="text-danger"></span>
+
 </div>
 
 <div>
     <textarea asp-for="Content" placeholder="Content" class="input"></textarea>
+    <span asp-validation-for="Content" class="text-danger"></span>
+
 </div>
 
 <button type="submit" class="login-button">Create Thread</button>
+}
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
